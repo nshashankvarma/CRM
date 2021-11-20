@@ -1,7 +1,59 @@
+
+.profileImage
+{
+    height:250px;
+    width:250px;
+    border-radius: 50%;
+    border: 1px solid;
+    overflow: hidden;
+}
+th
+{
+    font-size: 30px;
+}
+
+
+.layout{
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.rightbar{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.activityRow{
+    margin-top: 0.5rem;
+    display: flex;                  
+  flex-direction: row;            
+  flex-wrap: nowrap;       
+    border: 2px solid #b68973;
+     padding:0.6rem 1rem;       
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  
+}
+.activityRow:first-child{
+    padding: 1rem 1rem;
+    border-top: 0;
+    border-left: 0;
+    border-right:0;
+    border-bottom:2px solid;
+}
+.activityRow:last-child{
+    margin-bottom: 0.5rem;
+}
+
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
-*/
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -23,7 +75,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+ HTML5 display-role reset for older browsers 
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -72,7 +124,7 @@ table {
 .icons{
     width:2.5rem;
     margin-left: 2rem;
-    /* height:2rem; */
+     height:2rem; 
 }
 hr{
     height: 2rem;
@@ -101,4 +153,6 @@ hr{
      font-weight: bold;
      margin: 2rem 0;
      
- }
+ }*/
+
+ 

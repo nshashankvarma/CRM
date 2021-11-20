@@ -1,3 +1,13 @@
+@font-face {
+    font-family: font1;
+    src: url(https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap);
+}
+
+@font-face {
+    font-family: font2;
+    src: url(https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Playfair+Display&display=swap);
+}
+
 .logout
 {
     color:white
@@ -12,6 +22,81 @@
     overflow: hidden;
 }
 
+th
+{
+    font-size: 30px;
+}
+
+
+.layout{
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.rightbar{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dealRow{
+    margin-top: 0.5rem;
+    display: flex;                  
+  flex-direction: row;            
+  flex-wrap: nowrap;       
+    border: 2px solid #b68973;
+     padding:0.6rem 1rem;       
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  
+}
+.dealRow:first-child{
+    padding: 1rem 1rem;
+    border-top: 0;
+    border-left: 0;
+    border-right:0;
+    border-bottom:2px solid;
+}
+.dealRow:last-child{
+    margin-bottom: 0.5rem;
+}
+
+.navBar{
+    position:fixed;
+}
+
+.navContainer{
+    text-align: left;
+}
+
+.profileTitle
+{
+    font-size: 50px;
+    font-family: font1 ;
+}
+
+.profileName
+{
+    font-size: 20px;
+    font-family: font2;
+}
+
+.profileEmail
+{
+    font-size: 20px;
+    font-family: font2;
+   
+}
+
+.profileContact
+{
+    font-size: 20px;
+    font-family: font2;
+   
+}
 /*
 
 .profileCard 
@@ -23,42 +108,8 @@
 
 
 
-.profileTitle
-{
-    font-size: 50px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    position: absolute;
-    left: 75px;
-    top: 20px;
 
-}
 
-.profileName
-{
-    font-size: 25px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: absolute;
-    left: 30px;
-    top: 400px;
-}
-
-.profileEmail
-{
-    font-size: 25px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: absolute;
-    left: 30px;
-    top: 450px;
-}
-
-.profileContact
-{
-    font-size: 25px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: absolute;
-    left: 30px;
-    top: 500px;
-}
 
 
 .notification
@@ -154,47 +205,7 @@
     top: 150px;
 } */
 
-th
-{
-    font-size: 30px;
-}
 
-
-.layout{
-    display: flex;
-    justify-content: space-between;
-    padding: 4rem;
-    flex-wrap: wrap;
-    gap: 4rem;
-}
-
-.rightbar{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.dealRow{
-    margin-top: 0.5rem;
-    display: flex;                  
-  flex-direction: row;            
-  flex-wrap: nowrap;       
-    border: 2px solid #b68973;
-     padding:0.6rem 1rem;       
-  justify-content: space-between;
-  border-radius: 0.5rem;
-  
-}
-.dealRow:first-child{
-    padding: 1rem 1rem;
-    border-top: 0;
-    border-left: 0;
-    border-right:0;
-    border-bottom:2px solid;
-}
-.dealRow:last-child{
-    margin-bottom: 0.5rem;
-}
 /* .dealRow > div{
     width: 100px;
   height: 100px;

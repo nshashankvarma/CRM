@@ -1,4 +1,4 @@
-import { Button, Container, Navbar, Card, Table } from 'react-bootstrap'
+import { Button, Container, Navbar, Card, Table} from 'react-bootstrap'
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {AiFillDelete} from 'react-icons/ai'
@@ -100,6 +100,7 @@ const Home = () => {
     const deleteItem =(item)=>{
         axios.post("http://localhost:3001/deletedeal", {title:item})
     }
+  
 
     return (
         <div style={{
@@ -121,8 +122,9 @@ const Home = () => {
                 setShow={setShowToastD}
                 show={showToastD}
             />
-            <Navbar bg="dark" variant="dark">
-                <Container>
+
+            <Navbar class="navBar" bg="dark" variant="dark">
+                <Container class="navContainer">
                     <Navbar.Brand href="#home">
                         <img
                             alt=""
@@ -137,8 +139,8 @@ const Home = () => {
                 </Container>
             </Navbar>
             <div className="layout">
-                <Card className="profileCard p-4" style={{ borderRadius: '0.5rem' }}>
-                    <Card.Title className="profileTitle"><div style={{ color: '#b68973' }}>Profile Info</div></Card.Title>
+                <Card className="profileCard p-4" style={{ borderRadius: '0.5rem',minWidth:"20rem",flex:'2',minHeight:"35rem" }}>
+                    <Card.Title className="profileTitle">Profile Info</Card.Title>
 
                     <div className="profileImage">
                         <Card.Img src="https://freepngimg.com/download/facebook/62681-flat-icons-face-computer-design-avatar-icon.png" />
@@ -151,7 +153,7 @@ const Home = () => {
                         <Card.Text className="profileContact"><div style={{ color: '#000000' }}><b>Phone:</b>{user.phone}</div></Card.Text>
                     </Card.Body>
                 </Card>
-                <Card className="dealsCard p-4" style={{ borderRadius: '0.5rem' }}>
+                <Card className="dealsCard p-4" style={{ borderRadius: '0.5rem',minWidth:"20rem",flex:'2',minHeight:"35rem" }}>
                     <Card.Title className="dealsTitle">Deals</Card.Title>
                     <Card.Body className="dealsBody">
                         <div className="dealRow"><div>Title</div><div>Partner</div><div>Description</div></div>
@@ -163,7 +165,7 @@ const Home = () => {
                 <div className="rightbar">
 
                     <Container>
-                        <Card className="notificationsCard p-4" style={{ borderRadius: '0.5rem' }}>
+                        <Card className="notificationsCard p-4" style={{ borderRadius: '0.5rem',minWidth:"30rem",minHeight:"17.5rem",flex:'2'}}>
                             <Card.Title className="notificationTitle">Notifications</Card.Title>
                             <Card.Body className="notificationBody">
 
@@ -172,7 +174,7 @@ const Home = () => {
                         </Card>
                     </Container>
                     <Container>
-                        <Card className="crucialDealsCard p-4">
+                        <Card className="crucialDealsCard p-4" style={{ borderRadius: '0.5rem',minWidth:"30rem",minHeight:"17.5rem",flex:'2'}}>
                             <Card.Title className="crucialDealsTitle">Crucial Deals</Card.Title>
                             <Card.Body className="crucialDealsBody">
 
