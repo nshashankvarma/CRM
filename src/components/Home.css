@@ -2,3 +2,201 @@
 {
     color:white
 }
+
+.profileImage
+{
+    height:250px;
+    width:250px;
+    border-radius: 50%;
+    border: 1px solid;
+    overflow: hidden;
+}
+
+/*
+
+.profileCard 
+{
+    background-color:green; 
+}
+
+
+
+
+
+.profileTitle
+{
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: absolute;
+    left: 75px;
+    top: 20px;
+
+}
+
+.profileName
+{
+    font-size: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: absolute;
+    left: 30px;
+    top: 400px;
+}
+
+.profileEmail
+{
+    font-size: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: absolute;
+    left: 30px;
+    top: 450px;
+}
+
+.profileContact
+{
+    font-size: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: absolute;
+    left: 30px;
+    top: 500px;
+}
+
+
+.notification
+{
+    font-size: 25px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.notificationBody
+{
+    position: absolute;
+    left: 50px;
+    top: 100px;
+}
+
+.notificationsCard
+{
+    background-color: #ffffe0;
+    height:400px;
+    width:400px;
+    position: absolute;
+    right: 0px;
+    top: 55px;
+}
+
+.notificationTitle
+{
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: absolute;
+    right: 50px;
+    top: 20px;
+
+}
+
+.crucialDeals
+{
+    font-size: 25px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.crucialDealsBody
+{
+    position: absolute;
+    left: 50px;
+    top: 100px;
+}
+
+.crucialDealsCard
+{
+    background-color: #ffffe0;
+    height:400px;
+    width:400px;
+    position: absolute;
+    right: 0px;
+    top: 450px;
+}
+
+.crucialDealsTitle
+{
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: absolute;
+    right: 50px;
+    top: 20px;
+
+}
+
+.dealsCard
+{
+    background-color: #ffffe0;
+    height:790px;
+    width: 900px;
+    position: absolute;
+    left: 400px;
+    top: 55px;
+}
+
+.dealsTitle
+{
+    font-size: 60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: absolute;
+    left: 375px;
+    top: 20px;
+}
+
+.dealsTable
+{
+    position: absolute;
+    left: 0px;
+    top: 150px;
+} */
+
+th
+{
+    font-size: 30px;
+}
+
+
+.layout{
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.rightbar{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dealRow{
+    margin-top: 0.5rem;
+    display: flex;                  
+  flex-direction: row;            
+  flex-wrap: nowrap;       
+    border: 2px solid #b68973;
+     padding:0.6rem 1rem;       
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  
+}
+.dealRow:first-child{
+    padding: 1rem 1rem;
+    border-top: 0;
+    border-left: 0;
+    border-right:0;
+    border-bottom:2px solid;
+}
+.dealRow:last-child{
+    margin-bottom: 0.5rem;
+}
+/* .dealRow > div{
+    width: 100px;
+  height: 100px;
+  border: 2px dashed red;
+} */

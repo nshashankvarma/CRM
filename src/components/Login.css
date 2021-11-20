@@ -1,11 +1,31 @@
 .login {
     width:50%;
-    display:inline-block;
+    display:inline-table;
+    align-content: flex-start;
     padding:2rem;
+    border-right: 2px solid black;
+    vertical-align:middle;
 }
 
 .signup {
     width:50%;
-    display: inline-block;
+    height: 100vh;
+    display: inline-table;
     padding: 2rem;
+    vertical-align:middle;
+
+}
+.body{
+    background-image: url("./tile_background.jpeg");
+
+}
+
+.login form, .signup form{
+    justify-self: center;
+    padding: 0 10rem;
+}
+.login h1, .signup h1{
+    justify-self: center;
+    text-align: center;
+    padding: 0 6rem;
 }
