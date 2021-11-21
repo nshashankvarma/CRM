@@ -2,6 +2,7 @@ import { BrowserRouter, Route,Routes} from 'react-router-dom'
 import Login from './components/Login';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Analytics from './components/Analytics';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <Route path="/home" element={<Home/>}>
       </Route>
       <Route path="/profile/:name" element={<Profile/>}>
+      </Route>
+      <Route path="/analytics" element={<Analytics/>}>
       </Route>
       </Routes>
     </BrowserRouter>
