@@ -1,7 +1,10 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import {Card,Container} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { Chart } from "react-google-charts";
+import background from "./tile_background.jpeg";
+import './Analytics.css';
 
 const Analytics = () => {
     const [data1, setData1] = useState([])
@@ -60,40 +63,54 @@ const Analytics = () => {
             });
     }
     return (
-        <div>
-            <Chart
-                width={'500px'}
-                height={'300px'}
-                chartType="PieChart"
-                loader={<div>Loading Chart</div>}
-                data={data1}
-                options={{
-                    title: 'My Daily Activities',
-                }}
-                rootProps={{ 'data-testid': '1' }}
-            />
-            <Chart
-                width={'500px'}
-                height={'300px'}
-                chartType="BarChart"
-                loader={<div>Loading Chart</div>}
-                data={data2}
-                options={{
-                    title: 'PartnerShips',
-                    chartArea: { width: '50%' },
-                    hAxis: {
-                        title: 'Total Deals',
-                        minValue: 0,
-                    },
-                    vAxis: {
-                        title: 'Partners',
-                    },
-                }}
+        <div style={{
+            backgroundImage: `url(${background})`,
+            backgroundRepeat: "repeat",
+            minHeight: "100vh"
+        }}>
+            <div className="layout">
+            <Container>
+                <Card className="pieChartCard p-4" style={{ borderRadius: '0.5rem',flex:'1',minWidth: '30rem',maxWidth: '50rem'}}>
+                    <Chart
+                        width={'500px'}
+                        height={'300px'}
+                        chartType="PieChart"
+                        loader={<div>Loading Chart</div>}
+                        data={data1}
+                        options={{
+                            title: 'My Daily Activities',
+                        }}
+                        rootProps={{ 'data-testid': '1' }}
+                     />
+                </Card>
+            </Container>
+            <Container>
+                <Card className="barGraphCard p-4" style={{ borderRadius: '0.5rem',flex:'1',minWidth: '30rem',maxWidth: '50rem'}}>
+                    <Chart
+                        width={'500px'}
+                        height={'300px'}
+                        chartType="BarChart"
+                        loader={<div>Loading Chart</div>}
+                        data={data2}
+                        options={{
+                            title: 'PartnerShips',
+                            chartArea: { width: '50%' },
+                            hAxis: {
+                                title: 'Total Deals',
+                                minValue: 0,
+                            },
+                            vAxis: {
+                                title: 'Partners',
+                            },
+                        }}
                 // For tests
                 rootProps={{ 'data-testid': '1' }}
             />
+                </Card>
+            </Container>
 
-            <button onClick={showAnalytics}>Show</button>
+            <button className="button"onClick={showAnalytics} style={{ backgroundColor:"blue",color:"white",minWidth: '5rem',maxWidth: '10rem'}}>Show</button>
+            </div>
         </div>
     );
 };
