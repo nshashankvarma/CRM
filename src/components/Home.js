@@ -122,9 +122,10 @@ const Home = () => {
                 setShow={setShowToastD}
                 show={showToastD}
             />
-            <Navbar bg='dark' variant='dark'>
-                <Container>
-                    <Navbar.Brand href='#home'>
+
+            <Navbar class="navBar" bg="dark" variant="dark">
+                <Container class="navContainer">
+                    <Navbar.Brand href="#home">
                         <img
                             alt=''
                             src='https://www.superoffice.co.uk/globalassets/home-com-website/resources/articles/visuals/what-is-crm/crm_top.jpg'
@@ -139,13 +140,9 @@ const Home = () => {
                     </span>
                 </Container>
             </Navbar>
-            <div className='layout'>
-                <Card
-                    className='profileCard p-4'
-                    style={{ borderRadius: '0.5rem' }}>
-                    <Card.Title className='profileTitle'>
-                        <div style={{ color: '#b68973' }}>Profile Info</div>
-                    </Card.Title>
+            <div className="layout">
+                <Card className="profileCard p-4" style={{ borderRadius: '0.5rem',minWidth:"20rem",flex:'2',minHeight:"35rem" }}>
+                    <Card.Title className="profileTitle">Profile Info</Card.Title>
 
                     <div className='profileImage'>
                         <Card.Img src='https://freepngimg.com/download/facebook/62681-flat-icons-face-computer-design-avatar-icon.png' />
@@ -219,40 +216,35 @@ const Home = () => {
                                 email={user.email}
                             />
                         )}
+                        </Card.Body>
+                        </Card>
+                <Card className="dealsCard p-4" style={{ borderRadius: '0.5rem',minWidth:"20rem",flex:'2',minHeight:"35rem" }}>
+                    <Card.Title className="dealsTitle">Deals</Card.Title>
+                    <Card.Body className="dealsBody">
+                        <div className="dealRow"><div>Title</div><div>Partner</div><div>Description</div></div>
+                        {deal.map((d) => { return (<div className="dealRow"><div>{d.title}</div>{(d.partner1 != user.name) ? <Link to={`/profile/${d.partner1}`}>{d.partner1}</Link> : <Link to={`/profile/${d.partner2}`}>{d.partner2}</Link>}<div>{d.desc ? d.desc : ' '}</div><AiFillDelete onClick={deleteItem(d.title)}/></div>) })}
+                        <Button onClick={handleAddDeal} style={{ marginLeft: "15rem", textAlign: "center", marginTop: "0.5rem" }}>+ Add</Button>
+                        {addDeal && <AddDeal show={addDeal} onHide={() => setAddDeal(false)} name={user.name} email={user.email} />}
                     </Card.Body>
                 </Card>
                 <div className='rightbar'>
                     <Container>
-                        <Card
-                            className='notificationsCard p-4'
-                            style={{ borderRadius: '0.5rem' }}>
-                            <Card.Title className='notificationTitle'>
-                                Notifications
-                            </Card.Title>
-                            <Card.Body className='notificationBody'>
-                                {notify && (
-                                    <Card.Text className='notification'>
-                                        New Deal Added
-                                    </Card.Text>
-                                )}
+                        <Card className="notificationsCard p-4" style={{ borderRadius: '0.5rem',minWidth:"30rem",minHeight:"17.5rem",flex:'2'}}>
+                            <Card.Title className="notificationTitle">Notifications</Card.Title>
+                            <Card.Body className="notificationBody">
+
+                                {notify && <Card.Text className="notification">New Deal Added</Card.Text>}
                             </Card.Body>
                         </Card>
                     </Container>
                     <Container>
-                        <Card className='crucialDealsCard p-4'>
-                            <Card.Title className='crucialDealsTitle'>
-                                Crucial Deals
-                            </Card.Title>
-                            <Card.Body className='crucialDealsBody'>
-                                <Card.Text className='crucialDeals'>
-                                    50 Crore
-                                </Card.Text>
-                                <Card.Text className='crucialDeals'>
-                                    0.0
-                                </Card.Text>
-                                <Card.Text className='crucialDeals'>
-                                    :(
-                                </Card.Text>
+                        <Card className="crucialDealsCard p-4" style={{ borderRadius: '0.5rem',minWidth:"30rem",minHeight:"17.5rem",flex:'2'}}>
+                            <Card.Title className="crucialDealsTitle">Crucial Deals</Card.Title>
+                            <Card.Body className="crucialDealsBody">
+
+                                <Card.Text className="crucialDeals">50 Crore</Card.Text>
+                                <Card.Text className="crucialDeals">0.0</Card.Text>
+                                <Card.Text className="crucialDeals">:(</Card.Text>
                             </Card.Body>
                         </Card>
                     </Container>
