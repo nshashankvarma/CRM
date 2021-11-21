@@ -1,0 +1,14 @@
+.layout{
+          padding: 8rem;
+            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            gap: 10rem;
+    
+}
+
+.barGraphCard{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
