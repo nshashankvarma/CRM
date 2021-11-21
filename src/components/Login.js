@@ -14,26 +14,7 @@ const Login = () => {
         phone:'',
         loggedIn: false
     })
-    // useEffect(()=>{
-    //     fetch("http://localhost:3001/login").then(res => {
-    //         if (res.ok) {
-    //             return res.json()
-    //         }
-    //     }).then(jsonRes=>{
-    //         const newUser = {
-    //             email: jsonRes.docs.email,
-    //             password:jsonRes.docs.password,
-    //             loggedIn: jsonRes.docs.loggedIn
-    //         }
-    //         if(input.password == newUser.password){
-    //             console.log("Correct password")
-    //         }
-    //         else
-    //         {
-    //             console.log("Wrong Log In");
-    //         }
-    //     }).catch(e => console.log("Login Error(Login.js)"))
-    // }, [])
+    
     const handleChange = (e) => {
         const { name, value } = e.target
         setInput(pres => {
@@ -44,7 +25,6 @@ const Login = () => {
         })
     }
     const handleSignupClick = (e) => {
-        // e.preventDefault()
         const newUser = {
             email: input.email,
             password: input.password,
@@ -57,13 +37,9 @@ const Login = () => {
         navigate("/home")
     }
     const handleLoginClick = (e) => {
-        // e.preventDefault()
         const newUser = {
             email: input.email,
             password: input.password,
-            //name: input.name?input.name:'',
-            // companies:[],
-            // loggedIn: true
         }
         axios.post("http://localhost:3001/login", newUser)
         navigate("/home")

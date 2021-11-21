@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Profile.css';
 import { useParams } from 'react-router-dom';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import Button from '@restart/ui/esm/Button';
 import AddAct from './AddAct';
 const Profile = () => {
@@ -9,44 +9,41 @@ const Profile = () => {
     const [user, setUser] = useState();
     const [profile, setProfile] = useState({});
     const [addAct, setAddAct] = useState(false);
-    const [activity, setActivity] = useState([{
-        name:'',
-        call:[],
-        mail:[]
-    }]);
+    const [activities, setActivities] = useState([]);
     const history = useNavigate();
-    const handleNewAct = ()=>{
+    const handleNewAct = () => {
         setAddAct(true);
-    }
+    };
     useEffect(() => {
-        setTimeout(()=>{
-        fetch(`http://localhost:3001/profile/${name}`)
-            .then((res) => {
-                return res.json();
-            })
-            .then((userdata) => {
-                if (userdata.docs) {
-                    setProfile(userdata.docs);
-                }
-                else
-                {
-                    console.log("No User Found")
-                    history("/home")
-                }
-            })
-            .catch((error) => console.log(error));}, 500)
-        
-            setTimeout(()=>{
-                fetch('http://localhost:3001/activity')
-                .then((res)=>{
+        setTimeout(() => {
+            fetch(`http://localhost:3001/profile/${name}`)
+                .then((res) => {
                     return res.json();
                 })
-                .then((userdata)=>{
-                    setActivity(userdata.docs.activities);
-                    console.log(userdata.docs.activities);
+                .then((userdata) => {
+                    if (userdata.docs) {
+                        setProfile(userdata.docs);
+                    } else {
+                        console.log('No User Found');
+                        history('/home');
+                    }
                 })
-                .catch((err)=>{console.log("No Activity");})
-            }, 1000)
+                .catch((error) => console.log(error));
+        }, 500);
+
+        setTimeout(() => {
+            fetch('http://localhost:3001/activity')
+                .then((res) => {
+                    return res.json();
+                })
+                .then((userdata) => {
+                    setActivities(userdata.docs.activities);
+                    // console.log(userdata.docs.activities);
+                })
+                .catch((err) => {
+                    console.log('No Activity');
+                });
+        }, 1000);
     }, [name]);
 
     return (
@@ -108,12 +105,25 @@ const Profile = () => {
                                     Activity
                                 </div>
                                 <div className='col border border-3 fs-4'>
-                                    Mails
+                                    Name
                                 </div>
                                 <div className='col border border-3 fs-4'>
-                                    Calls
+                                    Description
                                 </div>
                             </div>
+                            {activities.map((act) => (
+                                <div className='row text-center'>
+                                    <div className='col border border-3 fs-4'>
+                                        {act.activity}
+                                    </div>
+                                    <div className='col border border-3 fs-4'>
+                                        {act.name}
+                                    </div>
+                                    <div className='col border border-3 fs-4'>
+                                        {act.desc}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                         <Button onClick={handleNewAct}>+ Add</Button>
                     </div>
@@ -121,7 +131,7 @@ const Profile = () => {
                     <div className='col-3 column'>
                         <div className='row' style={{ height: '40%' }}>
                             <div className='col-title'>All Deals: </div>
-                                                 List of deals coming up...
+                            List of deals coming up...
                         </div>
                         <hr />
                         <div className='row'>
@@ -134,7 +144,13 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
-            {addAct && <AddAct show={addAct} onHide={() => setAddAct(false)} />}
+            {addAct && (
+                <AddAct
+                    show={addAct}
+                    onHide={() => setAddAct(false)}
+                    setActivities={setActivities}
+                />
+            )}
         </div>
     );
 };

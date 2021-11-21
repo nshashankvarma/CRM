@@ -8,6 +8,7 @@ const newuser = {
     password: '',
     name:''
 }
+const  names=[]
 router.route("/signup").post((req, res) => {
     const email = req.body.email
     const password = req.body.password
@@ -128,7 +129,7 @@ router.route("/profile/:name").get((req, res) => {
         }
     })
 })
-router.route("/deletedeal").get((req, res)=>{
+router.route("/deletedeal").post(async (req, res)=>{
     const title = req.body.title
     Deal.findOneAndDelete({title:title}, (err)=>{
         if(err) console.log("Couldnt delete deal!!Try Again Later");
@@ -166,13 +167,94 @@ router.route("/newact").post(async (req, res)=>{
     }
     var obj=[]
     try
-    {User.findOne({email:newuser.email}, (err, doc)=>{
-        obj = [...doc.activities, newAct]
-        console.log(obj);
-    })
-    User.findOneAndUpdate({email:newuser.email}, {$set:{activities: obj}});
-    console.log("New Activity!");}
-    catch(e){throw e}
-})
+    {
+        // const user = await User.findOne({email:newuser.email})
+        // obj = [...user.activities, newAct]
+        // console.log(obj);
+        await User.updateOne({email:newuser.email}, {
+            $push: {activities: newAct}
+        });
 
+        const user = await User.findOne({email:newuser.email})
+
+        // console.log("New Activity!");
+        return res.status(200).json({status: 200, activities: user.activities})
+    }
+    catch(e){
+        throw e
+    }
+})
+router.route("/analytics1").get((req, res)=>{    
+    var counts=[]
+    Deal.aggregate([
+        {$group: {_id:"$partner1"}}    
+    ]).exec((er, doc)=>{
+        //console.log(doc);
+        var count=0
+        for (i = 0; i < doc.length; i++) {
+            names[i] = (JSON.parse(JSON.stringify(doc[i])))
+        }
+        names.forEach(element => {
+            Deal.aggregate([
+                {$match: {$or:[{partner1:`${element._id}`},{partner2:`${element._id}`}]}}
+            ]).exec((er, docs)=>{                
+                counts.push(docs.length, element._id);
+                if(count == doc.length-1)
+                    return res.status(200).json({ status: 200, counts})
+                count++
+                
+            })
+        });
+        
+    })    
+    
+})
+router.route("/analytics2").get((req, res)=>{
+    counts=[]
+    Deal.aggregate([
+        {$group: {_id:"$partner1"}}    
+    ]).exec((er, doc)=>{
+        //console.log(doc);
+        var count=0
+        for (i = 0; i < doc.length; i++) {
+            names[i] = (JSON.parse(JSON.stringify(doc[i])))
+        }
+        Array.prototype.pairs = function (func) {
+            for (var i = 0; i < this.length - 1; i++) {
+                for (var j = i; j < this.length - 1; j++) {
+                    func([this[i], this[j+1]]);
+                }
+            }
+        }
+        var pairs=[]
+        names.pairs(function(pair){
+            pairs.push(pair)
+        });
+        pairs.forEach(element => {
+            // Deal.aggregate([
+            //     {$match: {$or:[{$and:[{partner1:`${element[0]}`},{partner2:`${element[1]}`}]},{$and:[{partner1:`${element[1]}`},{partner2:`${element[0]}`}]}]}}
+            // ]).exec((er, docs)=>{                
+            //     // counts.push(docs.length, element[0], element[1]);
+            //     // if(count == doc.length-1)
+            //     //     return res.status(200).json({ status: 200, counts})
+            //     // count++
+            //     console.log(docs);
+                
+            // })
+            console.log(element[0]._id, element[1]._id);
+            Deal.find({$or:[{partner1:element[0]._id, partner2:element[1]._id},{partner1:element[1]._id, partner2:element[0]._id}]}, (err, docs)=>{
+                if(!err)
+                counts.push(docs.length, element[0]._id, element[1]._id);
+                else
+                console.log("NO data present");
+                if(count == pairs.length-1)
+                    return res.status(200).json({ status: 200, counts})
+                count++
+            })
+            
+        });
+        
+        
+    })    
+})
 module.exports = router
