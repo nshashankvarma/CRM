@@ -18,6 +18,9 @@ const Profile = () => {
     const handleNewAct = () => {
         setAddAct(true);
     };
+    const handleAnalyticsClick = async () => {
+        history('/analytics');
+    };
     useEffect(() => {
         setTimeout(() => {
             fetch(`http://localhost:3001/profile/${name}`)
@@ -52,7 +55,8 @@ const Profile = () => {
 
     return (
         <div>
-            {/* <div>
+            <div>
+                {/* <div>
                 <div className='row'>
                     <div className='column col-3'>
                         <div className='row'>
@@ -148,30 +152,40 @@ const Profile = () => {
                     </div>
                 </div>
             </div> */}
+            </div>
 
             <div style={{
-                backgroundImage: `url(${background})`,
+                // backgroundImage: `url(${background})`,
+                backgroundColor: 'rgb(57, 57, 124)',
                 backgroundRepeat: "repeat",
                 minHeight: "100vh"
             }}>
-                <Navbar bg="dark" variant="dark">
-                    <Container>
-                        <Navbar.Brand href="#home">
-                            <img
-                                alt=""
-                                src="https://www.superoffice.co.uk/globalassets/home-com-website/resources/articles/visuals/what-is-crm/crm_top.jpg"
-                                width="50"
-                                height="30"
-                                className="d-inline-block align-top"
-                            />{' '}
-                            Customer Management
-                        </Navbar.Brand>
-                        {/*<span onClick={handleLogoutClick} className="logout">Logout</span>*/}
-                    </Container>
-                </Navbar>
-                <div className="layout">
-                    <Card className="profileCard p-4" style={{ borderRadius: '0.5rem', minWidth: "20rem", flex: '2', minHeight: "35rem" }}>
-                        <Card.Title className="profileTitle"><div style={{ color: '#b68973' }}>About</div></Card.Title>
+                <Navbar class="navBar" bg="dark" variant="dark">
+                <Container class="navContainer">
+                    <Navbar.Brand href="/home">
+                        <img
+                            alt=''
+                            src='https://www.superoffice.co.uk/globalassets/home-com-website/resources/articles/visuals/what-is-crm/crm_top.jpg'
+                            width='50'
+                            height='30'
+                            className='d-inline-block align-top'
+                        />{' '}
+                        Customer Management
+                    </Navbar.Brand>
+                    <span onClick={handleAnalyticsClick} className='analytics' style={{color:"white",cursor:"pointer"}}>
+                        Analytics
+                    </span>
+                </Container>
+            </Navbar>
+                <div className="layout" style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    padding: "4rem",
+                    flexWrap: "wrap",
+                    gap: "4rem"
+                }}>
+                    <Card className="profileCard p-4" style={{ borderRadius: '0.5rem', minWidth: "10rem", flex: '2', minHeight: "35rem" }}>
+                        <Card.Title className="profileTitle"><div style={{ color: 'white' }}>About</div></Card.Title>
 
                         <div className="profileImage">
                             <Card.Img src="https://freepngimg.com/download/facebook/62681-flat-icons-face-computer-design-avatar-icon.png" />
@@ -179,41 +193,61 @@ const Profile = () => {
 
                         <Card.Body>
 
-                            <Card.Text className="profileName"><div style={{ color: '#000000' }}><b>Name:</b>{/*{user.name}*/}</div></Card.Text>
-                            <Card.Text className="profileEmail"><div style={{ color: '#000000' }}><b>Email:</b>{/*{user.email}*/}</div></Card.Text>
-                            <Card.Text className="profileContact"><div style={{ color: '#000000' }}><b>Phone:</b>{/*{user.phone}*/}</div></Card.Text>
+                            <Card.Text className="profileName"><div style={{ color: '#000000' }}><b>Name:</b>{profile.name}</div></Card.Text>
+                            <Card.Text className="profileEmail"><div style={{ color: '#000000' }}><b>Email:</b>{profile.email}</div></Card.Text>
+                            <Card.Text className="profileContact"><div style={{ color: '#000000' }}><b>Phone:</b>{profile.phone}</div></Card.Text>
                         </Card.Body>
                     </Card>
-                    <Card className="activityCard p-4" style={{ borderRadius: '0.5rem', minWidth: "20rem", flex: '2', minHeight: "35rem" }}>
-                        <Card.Title className="activityTitle"><b>All Activities</b></Card.Title>
+                    <Card className="activityCard p-4" style={{ borderRadius: '0.5rem', minWidth: "30rem", flex: '2', minHeight: "35rem", fontSize: "1rem" }}>
+                        <Card.Title className="activityTitle" style={{backgroundColor:"rgb(64, 86, 185)", padding:"0.3rem", color:"white", borderRadius:"0.5rem"}}>All Activities</Card.Title>
                         <Card.Body className="activityBody">
                             <div className="activityRow"><div>Activity</div><div>Mails</div><div>Call</div></div>
-                            {/*{deal.map((d) => { return (<div className="dealRow"><div>{d.title}</div>{(d.partner1 != user.name) ? <Link to={`/profile/${d.partner1}`}>{d.partner1}</Link> : <Link to={`/profile/${d.partner2}`}>{d.partner2}</Link>}<div>{d.desc ? d.desc : ' '}</div><AiFillDelete onClick={deleteItem(d.title)}/></div>) })}
-                            <Button onClick={handleAddDeal} style={{ marginLeft: "15rem", textAlign: "center", marginTop: "0.5rem" }}>+ Add</Button>
-        {addDeal && <AddDeal show={addDeal} onHide={() => setAddDeal(false)} name={user.name} email={user.email} />}*/}
-                            <div>Called</div><div>Mailed</div><div>Called once more</div>
+                            {activities.map((act) => (
+                                <div className='row text-center' style={{fontSize:"0.5rem"}}>
+                                    <div className='col border border-2 mt-2 mr-2 fs-6' style={{borderRadius:"0.5rem"}}>
+                                        {act.activity}
+                                    </div>
+                                    <div className='col border border-2 mt-2 mr-2 fs-6' style={{borderRadius:"0.5rem"}}>
+                                        {act.name}
+                                    </div>
+                                    <div className='col border border-2 mt-2 mr-2 fs-6' style={{borderRadius:"0.5rem"}}>
+                                        {act.desc}
+                                    </div>
+                                </div>
+                            ))}
+                            <Button
+                                onClick={handleNewAct}
+                                style={{
+                                    marginLeft: '21rem',
+                                    textAlign: 'center',
+                                    marginTop: '0.5rem',
+                                    backgroundColor:'rgb(64, 86, 185)',
+                                    color:'white',
+                                    borderRadius:'0.5rem',
+                                    padding:"0.5rem"
+                                }}>
+                                + Add
+                            </Button>
                         </Card.Body>
                     </Card>
                     <div className="rightbar">
-
                         <Container>
-                            <Card className="allDealsCard p-4" style={{ borderRadius: '0.5rem', minWidth: "30rem", minHeight: "17.5rem", flex: '2' }}>
-                                <Card.Title className="allDealsTitle">All Deals</Card.Title>
+                            <Card className="allDealsCard p-4" style={{ borderRadius: '0.5rem', minWidth: "18rem", minHeight: "17.5rem", flex: '2' }}>
+                                <Card.Title className="allDealsTitle" style={{backgroundColor:"rgb(64, 86, 185)", padding:"0.3rem", color:"white", borderRadius:"0.5rem"}}>All Deals</Card.Title>
                                 <Card.Body className="allDealsBody">
-
                                     {/* {notify && <Card.Text className="allDeals">New Deal Added</Card.Text>}*/}
                                 </Card.Body>
                             </Card>
                         </Container>
                         <Container>
-                            <Card className="tasksCard p-4" style={{ borderRadius: '0.5rem', minWidth: "30rem", minHeight: "17.5rem", flex: '2' }}>
-                                <Card.Title className="tasksTitle">Tasks</Card.Title>
-                                <Card.Body className="tasksBody">
+                            <Card className="tasksCard p-4" style={{ borderRadius: '0.5rem', minWidth: "18rem", minHeight: "17.5rem", flex: '2' }}>
+                                <Card.Title className="tasksTitle" style={{backgroundColor:"rgb(64, 86, 185)", padding:"0.3rem", color:"white", borderRadius:"0.5rem"}}>Tasks</Card.Title>
+                                {/* <Card.Body className="tasksBody">
 
                                     <Card.Text className="tasks">50 Crore</Card.Text>
                                     <Card.Text className="tasks">0.0</Card.Text>
                                     <Card.Text className="tasks">:(</Card.Text>
-                                </Card.Body>
+                                </Card.Body> */}
                             </Card>
                         </Container>
                     </div>
@@ -228,7 +262,7 @@ const Profile = () => {
             )}
         </div>
     );
-                        
-            }
+
+}
 
 export default Profile;

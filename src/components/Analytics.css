@@ -1,0 +1,22 @@
+.layout{
+      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      gap: 10rem;
+      text-align: center;
+      padding:2rem
+
+}
+
+.barGraphCard{
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+.navBar{
+  position:fixed;
+}
+
+.navContainer{
+  text-align: left;
+}

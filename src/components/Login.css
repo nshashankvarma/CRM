@@ -1,25 +1,37 @@
+.body{
+    /*
+        display: flex;        
+        flex-wrap: wrap;
+        gap: 4rem;*/
+          padding: 6rem; 
+            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            gap: 10rem;
+    
+}
+
+.signupCard{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/*
 .login {
     width:50%;
     display:inline-table;
     align-content: flex-start;
     padding:2rem;
     border-right: 2px solid black;
-    vertical-align:middle;
 }
-
 .signup {
     width:50%;
     height: 100vh;
     display: inline-table;
     padding: 2rem;
-    vertical-align:middle;
-
+    align-items: center;
 }
-.body{
-    background-image: url("./tile_background.jpeg");
-
-}
-
 .login form, .signup form{
     justify-self: center;
     padding: 0 10rem;
@@ -29,3 +41,4 @@
     text-align: center;
     padding: 0 6rem;
 }
+*/

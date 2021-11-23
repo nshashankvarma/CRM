@@ -51,9 +51,9 @@ const AddDeal = (props) => {
                             <Form.Control onChange={handleChange} type="text" placeholder="Deal title" name="title" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicDesc">
-                            <Form.Label>Description: </Form.Label>
-                            <Form.Control as="textarea" rows={3} name="desc" placeholder="Description" />
+                        <Form.Group className="mb-3" controlId="formBasicTitle">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control onChange={handleChange} type="text" placeholder="Descriptions" name="desc" />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicTitle">

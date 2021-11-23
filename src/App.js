@@ -3,11 +3,14 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Analytics from './components/Analytics';
+import Intro from './components/Intro';
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
+    <Route path="/" element={<Intro/>}>
+      </Route>
       <Route path="/login" element={<Login/>}>
       </Route>
       <Route path="/home" element={<Home/>}>

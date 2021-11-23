@@ -5,6 +5,7 @@ const userSchema = {
     password:String,
     name:String,
     companies:Array,
+    phone: String,
     activities:Array,
     loggedIn:Boolean
 }
