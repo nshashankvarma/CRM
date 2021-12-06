@@ -194,7 +194,7 @@ const Home = () => {
                         </div>
                         {deal.map((d) => {
                             return (
-                                <div className='dealRow'>
+                                <div className='dealRow' style={{backgroundColor:(d.priority == 'High')?'#ffcbad':(d.priority == 'Medium')?'#f7ffb0':'#c2ffb0'}}>
                                     {}
                                     <div>{d.title}</div>
                                     {d.partner1 != user?.name ? (
@@ -266,7 +266,7 @@ const Home = () => {
                                 </div>
                             );}  
                             else{
-                                return(<div>Empty</div>)
+                                return(<div></div>)
                             }                          
                         })}
                                 {/* <Card.Text className="crucialDeals">50 Crore</Card.Text>

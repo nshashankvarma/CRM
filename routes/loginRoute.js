@@ -136,6 +136,7 @@ router.route("/deletedeal").post(async (req, res)=>{
     })
 })
 
+
 router.route("/newdeal").post(async (req, res) => {
     const title = req.body.title
     const desc = req.body.desc
@@ -184,6 +185,11 @@ router.route("/newact").post(async (req, res)=>{
         throw e
     }
 })
+
+router.route("/countdeals").get((req, res)=>{
+    
+})
+
 router.route("/analytics1").get((req, res)=>{    
     var counts=[]
     Deal.aggregate([

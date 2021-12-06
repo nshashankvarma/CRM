@@ -10,7 +10,6 @@ const AddDeal = (props) => {
         partner: '',
         priority: ''
     })
-    const [deal, setDeal] = useState([])
     const handleChange = (e) => {
         const { name, value } = e.target
         setInput(pres => {
@@ -63,9 +62,9 @@ const AddDeal = (props) => {
                         <Form.Group className="mb-3" controlId="formBasicTitle">
                             <Form.Label>Priority</Form.Label>
                             <select onChange={handleChange} name="priority">
-                                <option>High</option>
-                                <option>Medium</option>
-                                <option>Low</option>
+                                <option value="High">High</option>
+                                <option value="Medium" defaultChecked>Medium</option>
+                                <option value="Low">Low</option>
                             </select>
                         </Form.Group>
 

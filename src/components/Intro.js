@@ -2,6 +2,10 @@ import React from 'react';
 import "./Intro.css"
 import {Navbar, Container} from 'react-bootstrap'
 import { useNavigate } from 'react-router';
+import img1 from './resources/img1.png'
+import img2 from './resources/img2.png'
+import img3 from './resources/img3.png'
+import img4 from './resources/img4.png'
 
 const Intro = () => {
     const history = useNavigate()
@@ -47,7 +51,7 @@ const Intro = () => {
                             </div>
                         </div>
                         <div>
-                            <img id="img_one" src="../resources/img1.png" />
+                            <img id="img_one" src={img1} />
                         </div>
                     </div>
 
@@ -62,7 +66,7 @@ const Intro = () => {
                                     Use a central repository which holds all your contacts in one place to efficiently initiate and manage conversations with your team and clients.
                                 </div>
                             </div>
-                            <img className="inImages" src='../resources/img2.png' />
+                            <img className="inImages" src={img2} />
                         </div>
                         <div className="points" id="reverse">
                             <div className="pointtext">
@@ -73,7 +77,7 @@ const Intro = () => {
                                     By encapsulating and streamlining all contacts and transactions with a client into the <b>Deal</b>, you can now easily access and manage all activity that occurs between your team and the client, from first contact to product delivery.
                                 </div>
                             </div>
-                            <img className="inImages" src='../resources/img3.png' />
+                            <img className="inImages" src={img3} />
                         </div>
                         <div className="points">
                             <div className="pointtext">
@@ -84,7 +88,7 @@ const Intro = () => {
                                     See clear and conscise graphs that show you exactly how your business is faring, and what you need to focus on to move to greater heights.
                                 </div>
                             </div>
-                            <img className="inImages" src='../resources/img4.png' />
+                            <img className="inImages" src={img4} />
                         </div>
                     </div>
                     <div id="endbar">Start your Journey to the top with us Today.   <button id="getStarted" onClick={handleClick} style={{backgroundColor:"white", color:"rgb(64, 86, 185)", marginLeft:"2rem", padding:"0.1rem", borderRadius:"0.2rem"}}>Get Started</button></div>
