@@ -7,7 +7,8 @@ const dealSchema = {
     partner2:String,
     email1:String,
     email2:String,
-    priority:String
+    priority:String,
+    price:Number
 }
 
 const Deal = mongoose.model("Deal", dealSchema);

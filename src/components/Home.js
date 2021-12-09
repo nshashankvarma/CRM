@@ -32,6 +32,7 @@ const Home = () => {
             email2: '',
             priority:'',
             desc: '',
+            price:0
         },
     ]);
     const history = useNavigate();
@@ -104,6 +105,15 @@ const Home = () => {
     const deleteItem = (item) => {
         axios.post('http://localhost:3001/deletedeal', { title: item });
     };
+
+    function compareDeal(deal1, deal2){
+        if(deal2.price>deal1.price)
+            return 1;
+        if(deal2.price<deal1.price)
+            return -1;
+        else
+            return 0;
+    }
 
     return (
         <div
@@ -231,6 +241,7 @@ const Home = () => {
                             />
                         )}
                     </Card.Body>
+                    
                 </Card>
                 {/* <Card className="dealsCard p-4" style={{ borderRadius: '0.5rem',minWidth:"20rem",flex:'2',minHeight:"35rem" }}>
                     <Card.Title className="dealsTitle">Deals</Card.Title>
@@ -248,26 +259,31 @@ const Home = () => {
                             <Card.Body className="notificationBody">
 
                                 {notify && <Card.Text className="notification">New Deal Added</Card.Text>}
+                                <div>
+                                    <div>Total High Priority:{deal.filter(x => x.priority=="High").length}</div>
+                                    <div>Total Medium Priority:{deal.filter(x => x.priority=="Medium").length}</div>
+                                    <div>Total Low Priority:{deal.filter(x => x.priority=="Low").length}</div>
+                                </div>
                             </Card.Body>
                         </Card>
+                        
                     </Container>
                     <Container>
                         <Card className="crucialDealsCard p-4" style={{ borderRadius: '0.5rem', minWidth: "30rem", minHeight: "17.5rem", flex: '2' }}>
                             <Card.Title className="crucialDealsTitle">Crucial Deals</Card.Title>
                             <Card.Body className="crucialDealsBody">
-                            {deal.map((d) => {
-                                if(d.priority == "High")
-                            {return (
+                            {deal.sort(compareDeal).slice(0,5).map((d) => {
+                                return (
                                 <div className='dealRow'>
-                                    <div>{d.title}</div>                                    
+                                    <div>
+                                        <div>{d.title}</div>
+                                    </div> 
+                                    <div>Etd return: {d.price}</div>                                   
                                     <AiFillDelete
                                         onClick={() => deleteItem(d.title)}
                                     />
                                 </div>
-                            );}  
-                            else{
-                                return(<div></div>)
-                            }                          
+                            ); 
                         })}
                                 {/* <Card.Text className="crucialDeals">50 Crore</Card.Text>
                                 <Card.Text className="crucialDeals">0.0</Card.Text>

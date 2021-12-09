@@ -8,7 +8,8 @@ const AddDeal = (props) => {
         title: '',
         desc: '',
         partner: '',
-        priority: ''
+        priority: '',
+        price:0
     })
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -24,7 +25,8 @@ const AddDeal = (props) => {
             title: input.title,
             desc: input.desc,
             partner: input.partner,
-            priority: input.priority
+            priority: input.priority,
+            price: input.price
         }
         axios.post("http://localhost:3001/newdeal", {...newDeal, name:props.name, email:props.email})
         
@@ -67,7 +69,10 @@ const AddDeal = (props) => {
                                 <option value="Low">Low</option>
                             </select>
                         </Form.Group>
-
+                        <Form.Group className="mb-3" controlId="formBasicTitle">
+                            <Form.Label>Estimated price</Form.Label>
+                            <Form.Control onChange={handleChange} type="number" placeholder="Estimated Price" name="price" />
+                        </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>

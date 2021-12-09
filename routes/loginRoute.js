@@ -145,6 +145,7 @@ router.route("/newdeal").post(async (req, res) => {
     const email1 = req.body.email
     const email2=''
     const priority = req.body.priority
+    const price=req.body.price
     console.log(desc)
     const newDeal = new Deal({
         title,
@@ -153,7 +154,8 @@ router.route("/newdeal").post(async (req, res) => {
         desc,
         email1,
         email2,
-        priority
+        priority,
+        price
     });
     newDeal.save()
 })
