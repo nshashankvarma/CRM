@@ -40,6 +40,7 @@ const Home = () => {
     const handleAddDeal = () => {
         setAddDeal(true);
         showNotify(true);
+        
     };
 
     useEffect(() => {
@@ -104,6 +105,7 @@ const Home = () => {
     const handleProfileClick = (objId) => { };
     const deleteItem = (item) => {
         axios.post('http://localhost:3001/deletedeal', { title: item });
+        window.location.reload()
     };
 
     function compareDeal(deal1, deal2){

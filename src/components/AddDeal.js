@@ -31,6 +31,7 @@ const AddDeal = (props) => {
         axios.post("http://localhost:3001/newdeal", {...newDeal, name:props.name, email:props.email})
         
         props.onHide()
+        setTimeout(()=>{window.location.reload()}, 1000)
     }
     return (
         <div>
