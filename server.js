@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 app.use(cors());
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://Shashank:shashank@cluster0.twasi.mongodb.net/UsersDB")
+mongoose.connect("mongodb+srv://<User>:<password>@cluster0.twasi.mongodb.net/UsersDB")
 
 app.use("/", require("./routes/loginRoute"))
 
